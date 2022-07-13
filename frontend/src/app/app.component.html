@@ -1,0 +1,25 @@
+<nav *ngIf="!token" class="navbar ">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="home">Home </a>
+        <a class="navbar-brand" routerLink="home/signup">Sign up </a>
+        <a class="navbar-brand" routerLink="home/signin">Sign in </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<nav *ngIf="token" class="navbar ">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="pets/list">Pet List </a>
+        <a *ngIf="user.role.toLowerCase() ==='breeder'" class="navbar-brand" routerLink="pets/add">Post Pet </a>
+        <a class="navbar-brand" (click)="handleSignOut()">Sign out</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

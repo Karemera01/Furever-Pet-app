@@ -1,0 +1,84 @@
+###
+GET http://localhost:8000/users
+
+
+###
+POST http://localhost:8000/users/signup
+Content-Type: application/json
+
+{
+    "name":"Simon Peter",
+    "phone": 234456567,
+    "birthDate":"06/20/1992",
+    "email": "simon@gmail.com",
+    "password" : "123456",
+    "role" : "buyer"
+}
+
+
+###
+POST http://localhost:8000/users/signIn
+Content-Type: application/json
+
+{
+   "email": "john@gmail.com",
+    "password" : "123456"
+}
+
+
+###
+GET http://localhost:8000/pets
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE0MWE4ZjI3ZDFlMTgzYjI2NjQzZWMiLCJyb2xlIjoiYnJlZWRlciIsImlhdCI6MTY1NDk3Mjg3Nn0.mnptCZhrQhknvpDNG0Sw6pxpUT4Onkrth0FSBmpNx4w
+
+###
+POST http://localhost:8000/pets
+Content-Type: application/json
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE0MWE4ZjI3ZDFlMTgzYjI2NjQzZWMiLCJyb2xlIjoiYnJlZWRlciIsImlhdCI6MTY1NDkyMjAyMH0.K6O7sWNIbnLk8wQfURtF3rRIKmFep3pKj01HaqNmzb4
+
+{
+  "user_Id":"62a41a8f27d1e183b26643ec",
+  "petName": "Wawa",
+  "birthDate":" 05/23/2022",
+  "breed":"dud",
+  "expectedSize": 10,
+  "price": 100,
+  "weight": 3,
+  "parentBreed": { "mom": "dugg", "dad": " doodle"  },
+  "location":  [-91.976953, 40.990834 ]
+ 
+}
+
+###
+GET http://localhost:8000/pets/629ea190220c57583ba1902b
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE0MWE4ZjI3ZDFlMTgzYjI2NjQzZWMiLCJyb2xlIjoiYnJlZWRlciIsImlhdCI6MTY1NDkyMjAyMH0.K6O7sWNIbnLk8wQfURtF3rRIKmFep3pKj01HaqNmzb4
+
+
+###
+PUT http://localhost:8000/pets/629ea190220c57583ba1902b
+Content-Type: application/json
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE0MWE4ZjI3ZDFlMTgzYjI2NjQzZWMiLCJyb2xlIjoiYnJlZWRlciIsImlhdCI6MTY1NDkyMjAyMH0.K6O7sWNIbnLk8wQfURtF3rRIKmFep3pKj01HaqNmzb4
+
+
+
+
+###
+DELETE http://localhost:8000/pets/629ea190220c57583ba1902b
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE0MWE4ZjI3ZDFlMTgzYjI2NjQzZWMiLCJyb2xlIjoiYnJlZWRlciIsImlhdCI6MTY1NDkyMjAyMH0.K6O7sWNIbnLk8wQfURtF3rRIKmFep3pKj01HaqNmzb4
+
+
+
+###
+POST http://localhost:8000/pets/62a41c0f7e21e2fb8bc7f4ee/adoption-request
+Content-Type: application/json
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE0MWFlMDdlMjFlMmZiOGJjN2Y0ZTUiLCJyb2xlIjoiYnV5ZXIiLCJpYXQiOjE2NTQ5MjI1NDV9.zvgDJwQ4osL3bvBBl8ClzRDW_7M4QPvLj8EfPkJ_LgM
+
+{
+    "name":"Johnny Dow",
+    "email": "johnny@gmail.com",
+    "comment" : "I am interested in this puppy"
+}
+
+
+###
+DELETE http://localhost:8000/pets/629e9c582e2ed27ed49dbe2f/adoption-request/629eaefb1b67110b214eac4d
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmE0MWFlMDdlMjFlMmZiOGJjN2Y0ZTUiLCJyb2xlIjoiYnV5ZXIiLCJpYXQiOjE2NTQ5MjI1NDV9.zvgDJwQ4osL3bvBBl8ClzRDW_7M4QPvLj8EfPkJ_LgM

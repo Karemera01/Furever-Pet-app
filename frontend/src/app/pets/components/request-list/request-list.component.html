@@ -1,0 +1,17 @@
+<div class="container mt-3" >
+    <div class="row" *ngFor="let request of adoptionRequests |  paginate:{ itemsPerPage:itemsPerPage, currentPage:page, totalItems: totalItems}">
+        <div class="list-group">
+        <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-2">Detail Information</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Name: {{request.name}}</p>
+            <p class="mb-1">Email: {{request.email}}</p>
+            <p class="mb-1">Comment: {{request.comment}}</p>
+        </div>
+    </div>
+    </div>
+    
+    <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+</div>

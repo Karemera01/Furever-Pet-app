@@ -1,0 +1,110 @@
+<div class="customContainer">
+    <h3 class="mb-2">Add Pet Details</h3>
+    <form class="border p-3" [formGroup]="addPetForm" (ngSubmit)="handleAddPet()">
+        <div class="form-group mb-3">
+            <input class="form-control" [ngClass]="
+               addPetForm.controls['petName']?.invalid && addPetForm.controls['petName']?.touched
+                ? 'is-invalid'
+                : ''
+            " type="text" placeholder="Enter Pet Name" formControlName="petName" />
+            <div *ngIf="
+              addPetForm.controls['petName']?.invalid && addPetForm.controls['petName']?.touched
+            ">
+                <div *ngIf="addPetForm.controls['petName']?.getError('required')" class="text-danger">Name is Required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input id="floatingDOB" class="form-control" [ngClass]="
+              addPetForm.controls['birthDate']?.invalid &&
+               addPetForm.controls['birthDate']?.touched
+                ? 'is-invalid'
+                : ''
+            " type="date" formControlName="birthDate" />
+            <label for="floatingDOB">Date of Birth</label>
+            <div *ngIf="
+               addPetForm.controls['birthDate']?.invalid &&
+               addPetForm.controls['birthDate']?.touched
+            ">
+                <div *ngIf=" addPetForm.controls['birthDate']?.getError('required')" class="text-danger">Date of Birth
+                    is
+                    Required</div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <input class="form-control" [ngClass]="
+                       addPetForm.controls['breed']?.invalid && addPetForm.controls['breed']?.touched
+                        ? 'is-invalid'
+                        : ''
+                    " type="text" placeholder="Enter Breed" formControlName="breed" />
+            <div *ngIf="
+                      addPetForm.controls['breed']?.invalid && addPetForm.controls['breed']?.touched
+                    ">
+                <div *ngIf="addPetForm.controls['breed']?.getError('required')" class="text-danger">Breed is Required
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <input class="form-control" [ngClass]="
+            addPetForm.controls['price']?.invalid &&
+            addPetForm.controls['price']?.touched
+            ? 'is-invalid'
+            : ''
+        " type="text" placeholder="Enter price" formControlName="price" />
+            <div *ngIf="addPetForm.controls['price']?.invalid &&
+                              addPetForm.controls['price']?.touched">
+                <div *ngIf="addPetForm.controls['price']?.getError('required')" class="text-danger">price is
+                    Required</div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input class="form-control" [ngClass]="
+              addPetForm.controls['expectedSize']?.invalid &&
+              addPetForm.controls['expectedSize']?.touched
+                ? 'is-invalid'
+                : ''
+            " type="text" placeholder="Enter Expected Size" formControlName="expectedSize" />
+            <input class="form-control" [ngClass]="
+            addPetForm.controls['weight']?.invalid &&
+            addPetForm.controls['weight']?.touched
+            ? 'is-invalid'
+            : ''" type="text" placeholder="Enter weight" formControlName="weight" />
+
+        </div>
+        
+
+        <div formGroupName="parentBreed">
+            <div class="input-group mb-3">
+                <input class="form-control" [ngClass]="
+                addPetForm.controls['mom']?.invalid &&
+                addPetForm.controls['mom']?.touched
+                ? 'is-invalid'
+                : ''" type="text" placeholder="Mom breed" formControlName="mom" />
+                <input class="form-control" [ngClass]="
+                addPetForm.controls['dad']?.invalid &&
+                addPetForm.controls['dad']?.touched
+                ? 'is-invalid'
+                : ''" type="text" placeholder="Dad breed" formControlName="dad" />
+            </div>
+           
+        </div>
+        <div class="input-group  mb-3">
+            <input class="form-control" [ngClass]="
+                addPetForm.controls['long']?.invalid &&
+                addPetForm.controls['long']?.touched
+                ? 'is-invalid'
+                : ''" type="text" placeholder="longitude" formControlName="long" />
+            <input class="form-control" [ngClass]="
+                addPetForm.controls['lat']?.invalid &&
+                addPetForm.controls['lat']?.touched
+                ? 'is-invalid'
+                : ''" type="text" placeholder="latitiude" formControlName="lat" />
+        </div>
+        <div class="d-grid mt-3">
+            <button class="btn btn-secondary" type="submit" [disabled]="!addPetForm.valid">
+               Add Pet
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+<div class="list-group">
+    <div class="list-group-item"  [ngStyle]="{backgroundColor: pet.adopted ? '#ffdbe7' : ''}">
+        <div class="form-group" appControleVisibility>
+            <button *ngIf="user.role.toLowerCase() ==='buyer'" class="btn btn-sm btn-secondary m-1"
+                (click)="handleSendRequest()" [disabled]="pet.adopted">Request</button>
+            <button *ngIf="user.role.toLowerCase() ==='breeder'" class="btn btn-sm btn-secondary m-1"
+                (click)="handleRequestList()">Disp</button>
+            <button *ngIf="user.role.toLowerCase() ==='breeder'" class="btn btn-sm btn-secondary m-1"
+                (click)="handleMarkAdopted(pet.adopted)">Mark</button>
+            <button *ngIf="user.role.toLowerCase() ==='breeder'" class="btn btn-secondary btn-sm m-1" (click)="handleEdit()">
+                <i class="bi bi-pencil-square"></i>
+            </button>
+            <button *ngIf="user.role.toLowerCase() ==='breeder'" class="btn btn-sm btn-secondary m-1" (click)="handleDelete()">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-2">Detail Information</h5>
+        </div>
+        <p class="mb-1">Pet Name: {{pet.petName}}</p>
+        <p class="mb-1">Birth Date: {{pet.birthDate | date}}</p>
+        <p class="mb-1">Breed: {{pet.breed}}</p>
+        <p class="mb-1">Weight: {{pet.weight}}</p>
+        <p class="mb-1">Expected Size: {{pet.expectedSize}}</p>
+        <p class="mb-1">Price: {{pet.price}}</p>
+</div>
+

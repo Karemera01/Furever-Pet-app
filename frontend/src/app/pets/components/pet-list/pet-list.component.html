@@ -1,0 +1,49 @@
+<div class="customContainer">
+<div class="container mt-3" *ngIf="user.role.toLowerCase() ==='breeder'">
+    <h1 class="text-center">Your List of Pets</h1>
+    <div class="row" *ngFor="let pet of pets">
+        <div class="col row border p-3">
+            <div class="col-7">
+                <app-pet [pet]="pet"></app-pet>
+            </div>
+            <div class="col-5 row">
+                <div class="form-group  mb-3" >
+                        <button type="button" class="btn btn-sm btn-secondary" (click)="handleUpload(pet._id)">
+                            <i class="bi bi-file-arrow-up"></i>
+                        </button>
+                        <button type="button" (click)="fileInput.click()" class="btn btn-sm btn-light">
+                            <span *ngIf="!fileInput.value">Choose Image</span>
+                            <span *ngIf="fileInput.value">{{fileInput.value | removePath}}</span>
+                            <input #fileInput class="form-control" type="file" name="img" (change)="handleFileEvent($event)"
+                                [ngStyle]="{display:'none'}" />
+                        </button>
+                </div>
+                <div class="col-12">
+                    <img [src]="pet.img ? url + pet.img : ''" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3" *ngIf="user.role.toLowerCase() ==='buyer'">
+    <div class="row mb-3">
+        <app-map></app-map>
+    </div>
+    <h1 class="text-center">Choose From the List of Pets</h1>
+    <div class="row"
+        *ngFor="let pet of pets |  paginate:{ itemsPerPage:itemsPerPage, currentPage:page, totalItems: totalItems}">
+        <div class="col row border p-3">
+            <div class="col-6">
+                <app-pet [pet]="pet"></app-pet>
+            </div>
+            <div class="col-6 row">
+                <div class="col-12">
+                    <img [src]="pet.img ? url + pet.img : ''" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <pagination-controls class="text-center" (pageChange)="getPets((page = $event))"></pagination-controls>
+</div>
+</div>
